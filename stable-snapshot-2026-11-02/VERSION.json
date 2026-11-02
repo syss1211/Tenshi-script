@@ -1,0 +1,23 @@
+{
+  "savedAt": "2026-11-02T17:55:07.981Z",
+  "label": "User-confirmed stable public rollback reference",
+  "repository": "syss1211/Tenshi-script",
+  "clientCommit": "51cd543abedbe78db2647c22a11f2d8282d9800e",
+  "clientBlob": "ccbf054a24b9aa8e0813234fa961aacdc9951a9a",
+  "loaderBlob": "997e762766d2aa620d0801b808040914dba965d3",
+  "configBlob": "1d205ebc375f359558938f869a28c96e1765bd6e",
+  "monitorUrl": "https://tenshi-private-monitor-nyx.wiselatch2.chatgpt.site",
+  "features": {
+    "reportIntervalSeconds": 20,
+    "perReporterEggLimit": 15,
+    "publicTop": 30,
+    "classicFourFieldBroadcast": true,
+    "carryAndPresenceChanges": false
+  },
+  "files": {
+    "Tenshi-Finder-Beta.lua": "4a0e9354f94b14cb9756ad61dd80f11b2a2a067339026fe1c72d0f495cff6bcd",
+    "Tenshi-Finder-Beta.source.luau": "f02d0225fa726d15e65e066d1b94dee49df6ba2642be872c404dbcff166d20d3",
+    "NYX.lua": "801e673cb6839ad25561e1e0c12c8a5bea9c8808d919c4cad93e78d65445e16c",
+    "server.cjs": "ed6d05dfdaa17a730418338dbc1ba9543d22ed54745e286e93c67d15cc504cec"
+  }
+}
