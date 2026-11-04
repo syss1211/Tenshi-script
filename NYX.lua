@@ -1,5 +1,5 @@
 -- Stable Tenshi Finder entry point. Keep sharing this NYX.lua URL.
-local url = "https://raw.githubusercontent.com/syss1211/Tenshi-script/d2d5de67a1a624599450c96deefa6ce4001333c2/Tenshi-Finder-Beta.lua?nyx=" .. tostring(os.time())
+local url = "https://raw.githubusercontent.com/syss1211/Tenshi-script/eff63794045f4b9f066b2af0118913ae2f8c0ef8/Tenshi-Finder-Beta.lua?nyx=" .. tostring(os.time())
 local ok, source = pcall(function()
     return game:HttpGet(url)
 end)
