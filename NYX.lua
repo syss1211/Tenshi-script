@@ -7,7 +7,7 @@ return task.spawn(function()
     task.wait(2)
     local success, failure = pcall(function()
         -- Stable Tenshi Finder entry point. Keep sharing this NYX.lua URL.
-        local url = "https://raw.githubusercontent.com/syss1211/Tenshi-script/ffe91a04ee6b455aad0df353626da9f368c2dff1/Tenshi-Finder-Beta.lua?nyx=" .. tostring(os.time())
+        local url = "https://raw.githubusercontent.com/syss1211/Tenshi-script/dd062e23a55ef788be16fa8a931c75585a9e11c9/Tenshi-Finder-Beta.lua?nyx=" .. tostring(os.time())
         local ok, source = pcall(function()
             return game:HttpGet(url)
         end)
