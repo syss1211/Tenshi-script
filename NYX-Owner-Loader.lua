@@ -17,14 +17,22 @@ task.spawn(function()
         phase = "reading local owner access"
         local httpService = game:GetService("HttpService")
         local access = httpService:JSONDecode(readfile("Tenshi-Owner-Access.json"))
-        assert(type(access.endpoint) == "string" and access.endpoint:match("^https://[%w%-]+%.trycloudflare%.com$"), "Invalid owner endpoint")
+        local endpoint = access.endpoint
+        local resolved, configuration = pcall(function()
+            local url = "https://raw.githubusercontent.com/syss1211/Tenshi-script/main/NYX-Contabo-Config.json"
+            return httpService:JSONDecode(game:HttpGet(url .. "?nyx=" .. tostring(os.time())))
+        end)
+        if resolved and type(configuration) == "table" then
+            endpoint = configuration.endpoint
+        end
+        assert(type(endpoint) == "string" and endpoint:match("^https://[%w%.%-]+$"), "Invalid owner endpoint")
         assert(type(access.authorization) == "string", "Missing owner credential")
 
         phase = "downloading"
         local send = request or http_request or (syn and syn.request) or (http and http.request)
         assert(type(send) == "function", "Real HTTP request unavailable")
         local response = send({
-            Url = access.endpoint .. "/v1/owner/client",
+            Url = endpoint .. "/v1/owner/client",
             Method = "GET",
             Timeout = 10,
             Headers = {Authorization = access.authorization},
