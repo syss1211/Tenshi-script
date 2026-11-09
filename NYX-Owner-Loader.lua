@@ -10,7 +10,7 @@ task.spawn(function()
         while not players.LocalPlayer do task.wait(0.2) end
         local playerGui = players.LocalPlayer:WaitForChild("PlayerGui")
         local job = tostring(game.JobId)
-        if env[slot] == job or playerGui:FindFirstChild("TENSHI_FINDER_PREMIUM_PRIVATE") then return end
+        if env[slot] == job then return end
         env[slot] = job
         ownsSlot = true
 
@@ -32,10 +32,10 @@ task.spawn(function()
         local send = request or http_request or (syn and syn.request) or (http and http.request)
         assert(type(send) == "function", "Real HTTP request unavailable")
         local response = send({
-            Url = endpoint .. "/v1/owner/client",
+            Url = endpoint .. "/v1/owner/client?revision=" .. tostring(os.time()),
             Method = "GET",
             Timeout = 10,
-            Headers = {Authorization = access.authorization},
+            Headers = {Authorization = access.authorization, ["Cache-Control"] = "no-cache"},
         })
         local status = tonumber(response and (response.StatusCode or response.Status))
         assert(status == 200, "HTTP " .. tostring(status))
