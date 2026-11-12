@@ -10,7 +10,9 @@ task.spawn(function()
         while not players.LocalPlayer do task.wait(0.2) end
         local playerGui = players.LocalPlayer:WaitForChild("PlayerGui")
         local job = tostring(game.JobId)
-        if env[slot] == job or playerGui:FindFirstChild("TENSHI_FINDER_FILMING") then return end
+        if env[slot] == job then return end
+        local previous = playerGui:FindFirstChild("TENSHI_FINDER_FILMING")
+        if previous then previous:Destroy() end
         env[slot] = job
         ownsSlot = true
 
@@ -45,11 +47,11 @@ task.spawn(function()
         assert(run, why)
         env.__TenshiFilmingRequested=true
         local started,problem=pcall(run)
-        env.__TenshiFilmingRequested=nil
         assert(started,problem)
         assert(playerGui:WaitForChild("TENSHI_FINDER_FILMING", 5), "Filming window did not start")
+        env.__TenshiFilmingRequested=nil
         print("[Tenshi Filming] Filming opened.")
     end)
-    if ownsSlot then env[slot] = nil end
+    if ownsSlot then env[slot] = nil; env.__TenshiFilmingRequested=nil end
     if not ok then warn("[Tenshi Filming] " .. phase .. " — " .. tostring(err)) end
 end)
